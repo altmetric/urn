@@ -1,11 +1,8 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'urn/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'urn'
-  spec.version       = Urn::VERSION
+  spec.version       = '0.1.0'
   spec.authors       = ['Ana Castro', 'Jonathan Hernandez']
   spec.email         = ['support@altmetric.com']
 
