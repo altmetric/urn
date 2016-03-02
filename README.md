@@ -1,4 +1,4 @@
-# URN
+# URN [![Build Status](https://travis-ci.org/altmetric/urn.svg?branch=master)](https://travis-ci.org/altmetric/urn)
 
 Ruby library to validate and normalize URNs.
 
