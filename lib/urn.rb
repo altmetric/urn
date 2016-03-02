@@ -1,5 +1,5 @@
 class URN
-  REGEX = /^urn:[a-z0-9\-]{1,31}:[\S]+$/i
+  REGEX = /^urn:(?!urn:)[a-z0-9\-]{1,31}:[\S]+$/i
 
   attr_reader :urn
   private :urn
