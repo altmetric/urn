@@ -1,4 +1,4 @@
-# Urn
+# URN
 
 Ruby library to validate and normalize URNs.
 
