@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in urn.gemspec
 gemspec
+
+group :test do
+  gem 'rake', '~> 10.5'
+end
