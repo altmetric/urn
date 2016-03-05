@@ -2,14 +2,17 @@
 
 Ruby library to validate and normalize URNs.
 
-Note: This Gem doesn't strictly follow the [RFC2141](https://www.ietf.org/rfc/rfc2141.txt)
+**Current version:** 0.1.2  
+**Supported Ruby versions:** 2.1, 2.2, 2.3
+
+Note: This gem doesn't strictly follow [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt)
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's `Gemfile`:
 
 ```ruby
-gem 'urn'
+gem 'urn', '~> 0.1'
 ```
 
 And then execute:
@@ -18,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install urn
+    $ gem install urn -v '~> 0.1'
 
 ## Usage
 
@@ -37,9 +40,8 @@ urn.normalize
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/altmetric/urn.
 
-
 ## License
 
-Copyright © 2015-2016 Altmetric LLP
+Copyright © 2016 Altmetric LLP
 
 Distributed under the [MIT License](http://opensource.org/licenses/MIT).
