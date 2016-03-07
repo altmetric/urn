@@ -1,5 +1,3 @@
-require 'cgi'
-
 class URN
   PATTERN = 'urn:(?!urn:)[a-z0-9\-]{1,31}:[\S]+'.freeze
   REGEX = /^#{PATTERN}$/i
@@ -18,8 +16,10 @@ class URN
   def normalize
     return unless valid?
 
-    urn_parts = urn.split(':', 3)
+    _scheme, nid, nss = urn.split(':', 3)
+    normalized_nid = nid.downcase
+    normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
 
-    "#{urn_parts[0].downcase}:#{urn_parts[1].downcase}:#{CGI.unescape(urn_parts[2])}"
+    "urn:#{normalized_nid}:#{normalized_nss}"
   end
 end
