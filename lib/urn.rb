@@ -18,8 +18,8 @@ class URN
   def normalize
     return unless valid?
 
-    urn_parts = urn.split(':', 3)
+    _scheme, nid, nss = urn.split(':', 3)
 
-    "#{urn_parts[0].downcase}:#{urn_parts[1].downcase}:#{CGI.unescape(urn_parts[2])}"
+    "urn:#{nid.downcase}:#{nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }}"
   end
 end
