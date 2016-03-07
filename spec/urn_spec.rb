@@ -2,24 +2,20 @@ require 'urn'
 
 RSpec.describe URN do
   describe '#valid?' do
-    context 'returns true' do
-      it 'if it is valid' do
-        expect(described_class.new('urn:namespace:specificstring')).to be_valid
-      end
-
-      it 'if namespace includes urn' do
-        expect(described_class.new('urn:urnnamespace:specificstring')).to be_valid
-      end
+    it 'returns true if it is valid' do
+      expect(described_class.new('urn:namespace:specificstring')).to be_valid
     end
 
-    context 'returns false' do
-      it 'if it does not start with urn' do
-        expect(described_class.new('not-urn:namespace:specificstring')).not_to be_valid
-      end
+    it 'returns true if namespace includes urn' do
+      expect(described_class.new('urn:urnnamespace:specificstring')).to be_valid
+    end
 
-      it 'if namespace is urn' do
-        expect(described_class.new('urn:urn:specificstring')).not_to be_valid
-      end
+    it 'returns false if it does not start with urn' do
+      expect(described_class.new('not-urn:namespace:specificstring')).not_to be_valid
+    end
+
+    it 'returns false if namespace is urn' do
+      expect(described_class.new('urn:urn:specificstring')).not_to be_valid
     end
   end
 
