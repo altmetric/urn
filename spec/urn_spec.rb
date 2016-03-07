@@ -36,8 +36,12 @@ RSpec.describe URN do
       expect(described_class.new('urn:FOO:123').normalize).to eq('urn:foo:123')
     end
 
-    it 'lowercases %-escaping' do
-      expect(described_class.new('urn:foo:123%2CA456').normalize).to eq('urn:foo:123%2cA456')
+    it 'lowercases %-escaping in the NSS' do
+      expect(described_class.new('urn:foo:123%2C456').normalize).to eq('urn:foo:123%2c456')
+    end
+
+    it 'does not lowercase other characters in the NSS' do
+      expect(described_class.new('urn:foo:BA%2CR').normalize).to eq('urn:foo:BA%2cR')
     end
   end
 end

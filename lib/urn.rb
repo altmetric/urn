@@ -17,7 +17,9 @@ class URN
     return unless valid?
 
     _scheme, nid, nss = urn.split(':', 3)
+    normalized_nid = nid.downcase
+    normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
 
-    "urn:#{nid.downcase}:#{nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }}"
+    "urn:#{normalized_nid}:#{normalized_nss}"
   end
 end
