@@ -1,3 +1,5 @@
+require 'cgi'
+
 class URN
   PATTERN = 'urn:(?!urn:)[a-z0-9\-]{1,31}:[\S]+'.freeze
   REGEX = /^#{PATTERN}$/i
