@@ -1,8 +1,22 @@
-require 'cgi'
-
 class URN
-  PATTERN = 'urn:(?!urn:)[a-z0-9\-]{1,31}:[\S]+'.freeze
-  REGEX = /^#{PATTERN}$/i
+  REGEX = %r{
+    \A
+    urn:
+    (?<nid>
+      (?!urn:) # the NID "urn" is reserved and MUST NOT be used
+      [A-Za-z0-9] # let-num
+      [A-Za-z0-9-]{1,31} # let-num-hyp
+    )
+    :
+    (?<nss>
+      (?: # URN chars
+        [A-Za-z0-9()+,-.:=@;$_!*'] # trans
+        |
+        %[0-9A-Fa-f]{2} # hex
+      )+
+    )
+    \z
+  }xi
 
   attr_reader :urn
   private :urn
@@ -12,14 +26,28 @@ class URN
   end
 
   def valid?
-    !(urn =~ REGEX).nil?
+    REGEX === urn
   end
 
   def normalize
     return unless valid?
 
-    _scheme, nid, nss = urn.split(':', 3)
+    "urn:#{nid}:#{nss}"
+  end
 
-    "urn:#{nid.downcase}:#{nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }}"
+  def nid
+    return unless valid?
+
+    urn[REGEX, :nid].downcase
+  end
+
+  def nss
+    return unless valid?
+
+    urn[REGEX, :nss].gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
+  end
+
+  def ==(other)
+    other.is_a?(URN) && normalize == other.normalize
   end
 end

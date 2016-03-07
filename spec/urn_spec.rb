@@ -40,4 +40,72 @@ RSpec.describe URN do
       expect(described_class.new('urn:foo:123%2CA456').normalize).to eq('urn:foo:123%2cA456')
     end
   end
+
+  describe '#nid' do
+    it 'returns nil if it is not valid' do
+      expect(described_class.new('urn:').nid).to be_nil
+    end
+
+    it 'returns the NID from the URN' do
+      expect(described_class.new('urn:foo:bar').nid).to eq('foo')
+    end
+
+    it 'returns the normalized NID from the URN' do
+      expect(described_class.new('urn:FOO:bar').nid).to eq('foo')
+    end
+  end
+
+  describe '#nss' do
+    it 'returns nil if it is not valid' do
+      expect(described_class.new('urn:').nss).to be_nil
+    end
+
+    it 'returns the NSS from the URN' do
+      expect(described_class.new('urn:foo:Bar').nss).to eq('Bar')
+    end
+
+    it 'returns the normalized NID from the URN' do
+      expect(described_class.new('urn:foo:Bar%2CBaz').nss).to eq('Bar%2cBaz')
+    end
+  end
+
+  describe '#=' do
+    it 'is only equal to other URNs' do
+      expect(described_class.new('urn:foo:bar')).not_to eq('foo')
+    end
+
+    it 'is equal to itself' do
+      urn = described_class.new('urn:foo:bar')
+
+      expect(urn).to eq(urn)
+    end
+
+    it 'is equal to identical URNs' do
+      expect(described_class.new('urn:foo:bar')).to eq(described_class.new('urn:foo:bar'))
+    end
+
+    it 'is equal to URNs with a differently-cased "urn:" token' do
+      urn = described_class.new('URN:foo:a123,456')
+
+      expect(urn).to eq(described_class.new('urn:foo:a123,456'))
+    end
+
+    it 'is equal to URNs with a differently-cased NID' do
+      urn = described_class.new('urn:foo:a123,456')
+
+      expect(urn).to eq(described_class.new('urn:FOO:a123,456'))
+    end
+
+    it 'is equal to URNs with differently-cased %-escaping' do
+      urn = described_class.new('urn:foo:a123%2C456')
+
+      expect(urn).to eq(described_class.new('urn:foo:a123%2c456'))
+    end
+
+    it 'is not equal to URNs with %-escaping' do
+      urn = described_class.new('urn:foo:a123,456')
+
+      expect(urn).not_to eq(described_class.new('urn:foo:a123%2c456'))
+    end
+  end
 end
