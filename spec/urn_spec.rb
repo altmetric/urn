@@ -1,24 +1,24 @@
-require 'spec_helper'
+require 'urn'
 
-describe URN do
+RSpec.describe URN do
   describe '#valid?' do
     context 'returns true' do
       it 'if it is valid' do
-        expect(described_class.new('urn:namespace:specificstring').valid?).to be(true)
+        expect(described_class.new('urn:namespace:specificstring')).to be_valid
       end
 
       it 'if namespace includes urn' do
-        expect(described_class.new('urn:urnnamespace:specificstring').valid?).to be(true)
+        expect(described_class.new('urn:urnnamespace:specificstring')).to be_valid
       end
     end
 
     context 'returns false' do
       it 'if it does not start with urn' do
-        expect(described_class.new('not-urn:namespace:specificstring').valid?).to be(false)
+        expect(described_class.new('not-urn:namespace:specificstring')).not_to be_valid
       end
 
       it 'if namespace is urn' do
-        expect(described_class.new('urn:urn:specificstring').valid?).to be(false)
+        expect(described_class.new('urn:urn:specificstring')).not_to be_valid
       end
     end
   end
