@@ -5,8 +5,6 @@ Ruby library to validate and normalize URNs.
 **Current version:** 0.1.2  
 **Supported Ruby versions:** 1.8.7, 1.9.2, 1.9.3, 2.0, 2.1, 2.2, 2.3
 
-Note: This gem doesn't strictly follow [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt)
-
 ## Installation
 
 Add this line to your application's `Gemfile`:
@@ -66,13 +64,7 @@ URN.new('urn:foo:bar').valid?
 #=> true
 ```
 
-Returns true if the `URN` is valid according to the following rules:
-
-* Begins with `urn:` (case-insensitive);
-* Contains a namespace identifier consisting solely of letters, numbers or
-  hyphens and is not the string `urn`;
-* Contains a namespace specific string consisting of any non-whitespace
-  character.
+Returns true if the `URN` is valid according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
 
 ### `URN#normalize`
 
