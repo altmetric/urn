@@ -19,6 +19,10 @@ RSpec.describe URN do
       expect(described_class.new('urn:urn:specificstring')).not_to be_valid
     end
 
+    it 'returns false if namespace is URN' do
+      expect(described_class.new('urn:URN:specificstring')).not_to be_valid
+    end
+
     it 'returns true if the namespace identifier is 32 characters long' do
       nid = 'a' * 32
 
