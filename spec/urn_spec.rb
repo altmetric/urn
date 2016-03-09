@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'urn'
 
 RSpec.describe URN do
@@ -17,6 +18,24 @@ RSpec.describe URN do
     it 'returns false if namespace is urn' do
       expect(described_class.new('urn:urn:specificstring')).not_to be_valid
     end
+
+    it 'returns true if the namespace identifier is 32 characters long' do
+      nid = 'a' * 32
+
+      expect(described_class.new("urn:#{nid}:bar")).to be_valid
+    end
+
+    it 'returns false if the namespace identifier begins with a hyphen' do
+      expect(described_class.new('urn:-foo:bar')).not_to be_valid
+    end
+
+    it 'returns false if the namespace specific string has invalid escaping' do
+      expect(described_class.new('urn:foo:bar%2')).not_to be_valid
+    end
+
+    it 'returns false if the namespace specific string has reserved characters' do
+      expect(described_class.new('urn:foo:café')).not_to be_valid
+    end
   end
 
   describe '#normalize' do
@@ -28,15 +47,15 @@ RSpec.describe URN do
       expect(described_class.new('URN:foo:123').normalize).to eq('urn:foo:123')
     end
 
-    it 'lowercases the NID' do
+    it 'lowercases the namespace identifier' do
       expect(described_class.new('urn:FOO:123').normalize).to eq('urn:foo:123')
     end
 
-    it 'lowercases %-escaping in the NSS' do
+    it 'lowercases %-escaping in the namespace specific string' do
       expect(described_class.new('urn:foo:123%2C456').normalize).to eq('urn:foo:123%2c456')
     end
 
-    it 'does not lowercase other characters in the NSS' do
+    it 'does not lowercase other characters in the namespace specific string' do
       expect(described_class.new('urn:foo:BA%2CR').normalize).to eq('urn:foo:BA%2cR')
     end
   end

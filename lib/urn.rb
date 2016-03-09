@@ -1,5 +1,6 @@
 class URN
-  PATTERN = 'urn:(?!urn:)[a-z0-9\-]{1,31}:[\S]+'.freeze
+  PATTERN = %(urn:(?!urn:)[A-Za-z0-9][A-Za-z0-9\-]{1,31}:) +
+            %((?:[A-Za-z0-9()+,-.:=@;$_!*']|%[0-9A-Fa-f]{2})+).freeze
   REGEX = /^#{PATTERN}$/i
 
   attr_reader :urn
