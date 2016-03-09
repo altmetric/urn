@@ -1,8 +1,8 @@
 # URN [![Build Status](https://travis-ci.org/altmetric/urn.svg?branch=master)](https://travis-ci.org/altmetric/urn)
 
-Ruby library to validate and normalize URNs.
+Ruby library to validate and normalize URNs according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
 
-**Current version:** 0.1.3  
+**Current version:** 1.0.0  
 **Supported Ruby versions:** 1.8.7, 1.9.2, 1.9.3, 2.0, 2.1, 2.2, 2.3
 
 ## Installation
@@ -10,7 +10,7 @@ Ruby library to validate and normalize URNs.
 Add this line to your application's `Gemfile`:
 
 ```ruby
-gem 'urn', '~> 0.1'
+gem 'urn', '~> 1.0'
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install urn -v '~> 0.1'
+    $ gem install urn -v '~> 1.0'
 
 ## Usage
 

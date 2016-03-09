@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.0] - 2016-03-09
+### Changed
+- The library is now [RFC2141](https://www.ietf.org/rfc/rfc2141.txt) compliant.
+
 ## [0.1.3] - 2016-03-07
 ### Fixed
 - Explicitly require CGI standard library
@@ -18,6 +22,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First version with basic implementation.
 
+[1.0.0]: https://github.com/altmetric/urn/releases/tag/v1.0.0
 [0.1.3]: https://github.com/altmetric/urn/releases/tag/v0.1.3
 [0.1.2]: https://github.com/altmetric/urn/releases/tag/v0.1.2
 [0.1.1]: https://github.com/altmetric/urn/releases/tag/v0.1.1
