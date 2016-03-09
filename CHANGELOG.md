@@ -14,6 +14,16 @@ urn = URN('URN:NameSpace:Identifier')
 #=> #<URN:0x007fd97a835558 @urn="URN:NameSpace:Identifier">
 ```
 - `REGEX` into the API documentation
+- `#nid` to return the namespace identifier part of the `URN`.
+```ruby
+urn = URN('URN:NameSpace:Identifier')
+#=> "NameSpace"
+```
+- `#nss` to return the namespace specific string part of the `URN`.
+```ruby
+urn = URN('URN:NameSpace:Identifier')
+#=> "Identifier"
+```
 
 ## [1.0.0] - 2016-03-09
 ### Changed

@@ -73,4 +73,16 @@ RSpec.describe URN do
       expect(described_class.new('urn:foo:BA%2CR').normalize).to eq('urn:foo:BA%2cR')
     end
   end
+
+  describe '#nid' do
+    it 'returns the namespace identifier' do
+      expect(described_class.new('urn:namespace:specificstring').nid).to eq('namespace')
+    end
+  end
+
+  describe '#nss' do
+    it 'returns the namespace specific string' do
+      expect(described_class.new('urn:namespace:specificstring').nss).to eq('specificstring')
+    end
+  end
 end

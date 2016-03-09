@@ -83,6 +83,24 @@ URN.new('URN:FOO:BAR').normalize
 Return a normalized `String` representation of the `URN`, normalizing the case
 of the `urn` token and namespace identifier.
 
+### `URN#nid`
+
+```ruby
+URN.new('urn:nid:nss').nid
+#=> "nid"
+```
+
+Return the namespace identifier part of the `URN`.
+
+### `URN#nss`
+
+```ruby
+URN.new('urn:nid:nss').nss
+#=> "nss"
+```
+
+Return the namespace specific string for the `URN`.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/altmetric/urn.
