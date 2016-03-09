@@ -2,7 +2,7 @@
 
 Ruby library to validate and normalize URNs.
 
-**Current version:** 0.1.2  
+**Current version:** 0.1.3
 **Supported Ruby versions:** 1.8.7, 1.9.2, 1.9.3, 2.0, 2.1, 2.2, 2.3
 
 Note: This gem doesn't strictly follow [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt)
