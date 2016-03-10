@@ -11,16 +11,24 @@ class URN
   end
 
   def valid?
-    !(urn =~ REGEX).nil?
+    return @valid if defined?(@valid)
+    @valid = !(urn =~ REGEX).nil?
   end
 
   def normalize
     return unless valid?
 
-    _scheme, nid, nss = urn.split(':', 3)
-    normalized_nid = nid.downcase
-    normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
+    return @normalize if defined?(@normalize)
+    @normalize = begin
+      _scheme, nid, nss = urn.split(':', 3)
+      normalized_nid = nid.downcase
+      normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
 
-    "urn:#{normalized_nid}:#{normalized_nss}"
+      "urn:#{normalized_nid}:#{normalized_nss}"
+    end
+  end
+
+  def ==(other)
+    normalize && other.is_a?(URN) && (normalize == other.normalize)
   end
 end

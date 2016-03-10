@@ -74,7 +74,19 @@ URN.new('URN:FOO:BAR').normalize
 ```
 
 Return a normalized `String` representation of the `URN`, normalizing the case
-of the `urn` token and namespace identifier.
+of the `urn` token, namespace identifier and any %-escaping in the name specific string.
+
+### `URN#==(other)`
+
+```ruby
+URN.new('URN:foo:bar') == URN.new('urn:FOO:bar')
+#=> true
+
+URN.new('urn:foo:foo') == URN.new('urn:foo:bar')
+#=> false
+```
+
+Returns true if the `URN` is equivalent according to the [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
 
 ## Contributing
 

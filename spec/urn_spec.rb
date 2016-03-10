@@ -63,4 +63,18 @@ RSpec.describe URN do
       expect(described_class.new('urn:foo:BA%2CR').normalize).to eq('urn:foo:BA%2cR')
     end
   end
+
+  describe '#==' do
+    let(:foo) { described_class.new('URN:foo:123') }
+    let(:foo_eq) { described_class.new('urn:FOO:123') }
+    let(:bar) { described_class.new('urn:bar:123') }
+
+    it 'returns true if both URNs are equivalent' do
+      expect(foo).to eq(foo_eq)
+    end
+
+    it 'returns false when both URNs are not equivalent' do
+      expect(foo).not_to eq(bar)
+    end
+  end
 end
