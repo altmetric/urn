@@ -2,7 +2,8 @@
 
 Ruby library to validate and normalize URNs according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
 
-**Current version:** 1.0.0  
+[![Gem Version](https://badge.fury.io/rb/urn.svg)](https://badge.fury.io/rb/urn)  
+
 **Supported Ruby versions:** 1.8.7, 1.9.2, 1.9.3, 2.0, 2.1, 2.2, 2.3
 
 ## Installation
