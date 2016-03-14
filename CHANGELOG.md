@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## Current
+### Changed
+- Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
+- `#valid?` is deprecated and always return true
+
+## Added
+- Shortcut method (`URN()`) at creation:
+```ruby
+urn = URN('URN:NameSpace:Identifier')
+#=> #<URN:0x007fd97a835558 @urn="URN:NameSpace:Identifier">
+```
+- `REGEX` into the API documentation
+
 ## [1.0.0] - 2016-03-09
 ### Changed
 - The library is now [RFC2141](https://www.ietf.org/rfc/rfc2141.txt) compliant.
