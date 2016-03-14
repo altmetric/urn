@@ -25,14 +25,17 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
+urn = URN('URN:NameSpace:Identifier')
+#=> #<URN:0x007fd97a835558 @urn="URN:NameSpace:Identifier">
+
 urn = URN.new('URN:NameSpace:Identifier')
 #=> #<URN:0x007fd97a835558 @urn="URN:NameSpace:Identifier">
 
-urn.valid?
-#=> true
-
 urn.normalize
 #=> "urn:namespace:Identifier"
+
+urn = URN('123')
+#=> URN::InvalidURNError: bad URN(is not URN?): 123
 ```
 
 ## API Documentation
@@ -46,26 +49,29 @@ text.match(/\?urn=(#{URN::PATTERN})/)
 Return a `String` of an unanchored regular expression suitable for matching
 URNs.
 
-### `URN.new`
+### `URN::REGEX`
 
 ```ruby
+URN::REGEX
+#=> /\A(?i:urn:(?!urn:)[a-z0-9][a-z0-9-]{1,31}:(?:[a-z0-9()+,-.:=@;$_!*']|%[0-9a-f]{2})+)\z/
+```
+
+Return an `Regexp` object with the anchored regular expression suitable to match a URN.
+
+### `URN()` or `URN.new`
+
+```ruby
+urn = URN('urn:nid:nss')
+#=> #<URN:0xdecafbad @urn="urn:nid:nss">
+
 urn = URN.new('urn:nid:nss')
 #=> #<URN:0xdecafbad @urn="urn:nid:nss">
+
+urn = URN.new('1234')
+#=> URN::InvalidURNError: bad URN(is not URN?): 1234
 ```
 
-Return a new `URN` instance with the given string.
-
-### `URN#valid?`
-
-```ruby
-URN.new('foo').valid?
-#=> false
-
-URN.new('urn:foo:bar').valid?
-#=> true
-```
-
-Returns true if the `URN` is valid according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
+Return a new `URN` instance when the given string is valid according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt). Otherwise, it raises an `URN::InvalidURNError`
 
 ### `URN#normalize`
 
