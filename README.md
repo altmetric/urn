@@ -41,25 +41,19 @@ urn = URN('123')
 ## API Documentation
 
 ### `URN::PATTERN`
-
 ```ruby
 text.match(/\?urn=(#{URN::PATTERN})/)
 ```
-
-Return a `String` of an unanchored regular expression suitable for matching
-URNs.
+Return a `String` of an unanchored regular expression suitable for matching URNs.
 
 ### `URN::REGEX`
-
 ```ruby
 URN::REGEX
 #=> /\A(?i:urn:(?!urn:)[a-z0-9][a-z0-9-]{1,31}:(?:[a-z0-9()+,-.:=@;$_!*']|%[0-9a-f]{2})+)\z/
 ```
-
 Return an `Regexp` object with the anchored regular expression suitable to match a URN.
 
 ### `URN()` or `URN.new`
-
 ```ruby
 urn = URN('urn:nid:nss')
 #=> #<URN:0xdecafbad @urn="urn:nid:nss">
@@ -67,39 +61,33 @@ urn = URN('urn:nid:nss')
 urn = URN.new('urn:nid:nss')
 #=> #<URN:0xdecafbad @urn="urn:nid:nss">
 
-urn = URN.new('1234')
+urn = URN('1234')
 #=> URN::InvalidURNError: bad URN(is not URN?): 1234
 ```
-
 Return a new `URN` instance when the given string is valid according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt). Otherwise, it raises an `URN::InvalidURNError`
 
 ### `URN#normalize`
-
 ```ruby
-URN.new('URN:FOO:BAR').normalize
+URN('URN:FOO:BAR').normalize
 #=> "urn:foo:BAR"
 ```
-
 Return a normalized `String` representation of the `URN`, normalizing the case
 of the `urn` token and namespace identifier.
 
 ### `URN#nid`
-
 ```ruby
-URN.new('urn:nid:nss').nid
+URN('urn:nid:nss').nid
 #=> "nid"
 ```
-
-Return the namespace identifier part of the `URN`.
+Return the namespace identifier part.
 
 ### `URN#nss`
-
 ```ruby
-URN.new('urn:nid:nss').nss
+URN('urn:nid:nss').nss
 #=> "nss"
 ```
+Return the namespace specific string part.
 
-Return the namespace specific string for the `URN`.
 
 ## Contributing
 

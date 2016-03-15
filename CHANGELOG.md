@@ -10,19 +10,19 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ## Added
 - Shortcut method (`URN()`) at creation:
 ```ruby
-urn = URN('URN:NameSpace:Identifier')
-#=> #<URN:0x007fd97a835558 @urn="URN:NameSpace:Identifier">
+urn = URN('URN:Name:Spec')
+#=> #<URN:0x007fd97a835558 @urn="URN:Name:Spec">
 ```
 - `REGEX` into the API documentation
-- `#nid` to return the namespace identifier part of the `URN`.
+- `#nid` returns the namespace identifier part.
 ```ruby
-urn = URN('URN:NameSpace:Identifier')
-#=> "NameSpace"
+URN('URN:Name:Spec').nid
+#=> "Name"
 ```
-- `#nss` to return the namespace specific string part of the `URN`.
+- `#nss` returns the namespace specific string part.
 ```ruby
-urn = URN('URN:NameSpace:Identifier')
-#=> "Identifier"
+URN('URN:Name:Spec').nss
+#=> "Spec"
 ```
 
 ## [1.0.0] - 2016-03-09
