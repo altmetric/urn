@@ -88,6 +88,12 @@ URN('urn:nid:nss').nss
 ```
 Return the namespace specific string part.
 
+### `URN#to_s`
+```ruby
+URN('urn:Nid:Nss').to_s
+#=> "urn:Nid:Nss"
+```
+Return the `String` representation.
 
 ## Contributing
 

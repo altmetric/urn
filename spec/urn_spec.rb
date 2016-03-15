@@ -85,4 +85,10 @@ RSpec.describe URN do
       expect(described_class.new('urn:namespace:specificstring').nss).to eq('specificstring')
     end
   end
+
+  describe '#to_s' do
+    it 'returns the string representation of the URN' do
+      expect(described_class.new('urn:Name:Spec').to_s).to eq('urn:Name:Spec')
+    end
+  end
 end

@@ -24,6 +24,11 @@ URN('URN:Name:Spec').nid
 URN('URN:Name:Spec').nss
 #=> "Spec"
 ```
+- `#to_s` returns the `String` representation.
+```ruby
+URN('URN:Name:Spec').to_s
+#=> "URN:Name:Spec"
+```
 
 ## [1.0.0] - 2016-03-09
 ### Changed

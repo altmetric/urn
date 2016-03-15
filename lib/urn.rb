@@ -44,6 +44,10 @@ class URN
     "urn:#{normalized_nid}:#{normalized_nss}"
   end
 
+  def to_s
+    urn
+  end
+
   private
 
   def parse
