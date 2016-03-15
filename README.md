@@ -95,6 +95,39 @@ URN('urn:Nid:Nss').to_s
 ```
 Return the `String` representation.
 
+### `#===(other)`
+```ruby
+URN('urn:name:spec') === 'URN:Name:spec'
+#=> true
+
+URN('urn:name:spec') === URN('URN:Name:spec')
+#=> true
+```
+Return true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison, and allows comparison against Strings.
+
+### `#==(other)`
+```ruby
+URN('urn:name:spec') == 'URN:Name:spec'
+#=> false
+
+URN('urn:name:spec') == URN('URN:Name:spec')
+#=> true
+```
+Returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison.
+
+### `#eql?(other)`
+```ruby
+URN('urn:name:spec').eql?('urn:name:spec')
+#=> false
+
+URN('urn:name:spec').eql?(URN('urn:NAME:spec'))
+#=> false
+
+URN('urn:name:spec').eql?(URN('urn:name:spec'))
+#=> true
+```
+Returns true if the URN objects are equal. This method does NOT normalize either URN before doing the comparison.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/altmetric/urn.

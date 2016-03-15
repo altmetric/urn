@@ -30,6 +30,9 @@ URN('URN:Name:Spec').nss
 URN('URN:Name:Spec').to_s
 #=> "URN:Name:Spec"
 ```
+- `#===(other)` returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison, and allows comparison against Strings.
+- `#==(other)` returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison.
+- `#eql?(other)` returns true if the URN objects are equal. This method does NOT normalize either URN before doing the comparison.
 
 ## [1.0.0] - 2016-03-09
 ### Changed

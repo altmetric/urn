@@ -48,6 +48,32 @@ class URN
     urn
   end
 
+  def ===(other)
+    if other.respond_to?(:normalize)
+      urn_string = other.normalize.to_s
+    else
+      begin
+        urn_string = URN.new(other).normalize.to_s
+      rescue URN::InvalidURNError
+        return false
+      end
+    end
+
+    normalize.to_s == urn_string
+  end
+
+  def ==(other)
+    return false unless other.is_a?(URN)
+
+    normalize.to_s == other.normalize.to_s
+  end
+
+  def eql?(other)
+    return false unless other.is_a?(URN)
+
+    to_s == other.to_s
+  end
+
   private
 
   def parse

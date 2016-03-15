@@ -91,4 +91,46 @@ RSpec.describe URN do
       expect(described_class.new('urn:Name:Spec').to_s).to eq('urn:Name:Spec')
     end
   end
+
+  describe '#===' do
+    it 'returns true if the string is an equivalent valid URN' do
+      expect(described_class.new('urn:name:spec') === 'URN:Name:spec').to be(true)
+    end
+
+    it 'returns true if the normalized object of the other class is equal' do
+      expect(described_class.new('urn:name:spec') === URI('urn:name:spec')).to be(true)
+    end
+
+    it 'returns true if the URN object is an equivalent valid URN' do
+      expect(described_class.new('urn:name:spec') === described_class.new('URN:Name:spec')).to be(true)
+    end
+
+    it 'returns false if the URN is not equivalent' do
+      expect(described_class.new('urn:name:spec') === described_class.new('URN:Name:SPEC')).to be(false)
+    end
+
+    it 'return false if the URN is not valid' do
+      expect(described_class.new('urn:name:spec') === 'urn:urn:urn').to be(false)
+    end
+  end
+
+  describe '#==' do
+    it 'returns true if the URN object is an equivalent valid URN' do
+      expect(described_class.new('urn:name:spec')).to eq(described_class.new('URN:Name:spec'))
+    end
+
+    it 'returns false if the argument is not a URN object' do
+      expect(described_class.new('urn:name:spec')).not_to eq('urn:name:spec')
+    end
+  end
+
+  describe '#eql?' do
+    it 'returns true if both URNs are equal' do
+      expect(described_class.new('urn:Name:Spec')).to eql(described_class.new('urn:Name:Spec'))
+    end
+
+    it 'returns false if the URNs are not equal' do
+      expect(described_class.new('urn:name:spec')).not_to eql(described_class.new('urn:Name:spec'))
+    end
+  end
 end
