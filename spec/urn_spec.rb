@@ -58,19 +58,19 @@ RSpec.describe URN do
 
   describe '#normalize' do
     it 'lowercases the leading "urn:" token' do
-      expect(described_class.new('URN:foo:123').normalize).to eq('urn:foo:123')
+      expect(described_class.new('URN:foo:123').normalize.to_s).to eq('urn:foo:123')
     end
 
     it 'lowercases the namespace identifier' do
-      expect(described_class.new('urn:FOO:123').normalize).to eq('urn:foo:123')
+      expect(described_class.new('urn:FOO:123').normalize.to_s).to eq('urn:foo:123')
     end
 
     it 'lowercases %-escaping in the namespace specific string' do
-      expect(described_class.new('urn:foo:123%2C456').normalize).to eq('urn:foo:123%2c456')
+      expect(described_class.new('urn:foo:123%2C456').normalize.to_s).to eq('urn:foo:123%2c456')
     end
 
     it 'does not lowercase other characters in the namespace specific string' do
-      expect(described_class.new('urn:foo:BA%2CR').normalize).to eq('urn:foo:BA%2cR')
+      expect(described_class.new('urn:foo:BA%2CR').normalize.to_s).to eq('urn:foo:BA%2cR')
     end
   end
 

@@ -41,7 +41,7 @@ class URN
     normalized_nid = nid.downcase
     normalized_nss = nss.gsub(/%([0-9a-f]{2})/i, &:downcase)
 
-    "urn:#{normalized_nid}:#{normalized_nss}"
+    URN.new("urn:#{normalized_nid}:#{normalized_nss}")
   end
 
   def to_s

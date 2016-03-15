@@ -69,10 +69,10 @@ Return a new `URN` instance when the given string is valid according to [RFC 214
 ### `URN#normalize`
 ```ruby
 URN('URN:FOO:BAR').normalize
-#=> "urn:foo:BAR"
+#=> #<URN:0x007fb9a3096848 @urn="urn:foo:BAR">
 ```
-Return a normalized `String` representation of the `URN`, normalizing the case
-of the `urn` token and namespace identifier.
+Return the normalized `URN` object, normalizing the case
+of the `urn` token and namespace identifier. Call `#to_s` after `#normalize` if you want the normalized `String` representation.
 
 ### `URN#nid`
 ```ruby

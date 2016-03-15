@@ -6,6 +6,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
 - `#valid?` is deprecated and always return true
+- `#normalize` returns a normalized `URN` object instead of its `String` representation. You can get the normalized `String` representation with `.normalize.to_s`
 
 ## Added
 - Shortcut method (`URN()`) at creation:
