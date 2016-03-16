@@ -13,14 +13,9 @@ class URN
   private :urn
 
   def initialize(urn)
-    fail(InvalidURNError, "bad URN(is not URN?): #{urn}") if urn !~ REGEX
+    fail InvalidURNError, "bad URN(is not URN?): #{urn}" if urn !~ REGEX
 
     @urn = urn
-  end
-
-  def valid?
-    warn "[DEPRECATION] `valid?` is deprecated. Validity check is now at object creation."
-    true
   end
 
   def nid
@@ -39,7 +34,7 @@ class URN
     _scheme, nid, nss = parse
 
     normalized_nid = nid.downcase
-    normalized_nss = nss.gsub(/%([0-9a-f]{2})/i, &:downcase)
+    normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
 
     URN.new("urn:#{normalized_nid}:#{normalized_nss}")
   end

@@ -5,10 +5,9 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ## Current
 ### Changed
 - Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
-- `#valid?` is deprecated and always return true
 - `#normalize` returns a normalized `URN` object instead of its `String` representation. You can get the normalized `String` representation with `.normalize.to_s`
 
-## Added
+### Added
 - Shortcut method (`URN()`) at creation:
 ```ruby
 urn = URN('URN:Name:Spec')
@@ -33,6 +32,10 @@ URN('URN:Name:Spec').to_s
 - `#===(other)` returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison, and allows comparison against Strings.
 - `#==(other)` returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison.
 - `#eql?(other)` returns true if the URN objects are equal. This method does NOT normalize either URN before doing the comparison.
+
+### Removed
+- `#valid?`. Validity check is now at object creation time, therefore all instances of `URN` are valid.
+
 
 ## [1.0.0] - 2016-03-09
 ### Changed

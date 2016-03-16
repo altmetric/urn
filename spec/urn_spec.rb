@@ -2,7 +2,7 @@
 require 'urn'
 
 RSpec.describe URN do
-  describe 'Kernel.URN' do
+  describe 'URN' do
     it 'returns a URN if it is valid' do
       expect(URN('urn:namespace:specificstring')).to be_kind_of(described_class)
     end
@@ -25,15 +25,15 @@ RSpec.describe URN do
       expect(described_class.new('urn:urnnamespace:specificstring')).to be_kind_of(described_class)
     end
 
-    it 'returns error if it does not start with urn' do
+    it 'raises an error if it does not start with urn' do
       expect { described_class.new('not-urn:namespace:specificstring') }.to raise_error(described_class::InvalidURNError)
     end
 
-    it 'returns error if namespace is urn' do
+    it 'raises an error if namespace is urn' do
       expect { described_class.new('urn:urn:specificstring') }.to raise_error(described_class::InvalidURNError)
     end
 
-    it 'returns error if namespace is URN' do
+    it 'raises an error if namespace is URN' do
       expect { described_class.new('urn:URN:specificstring') }.to raise_error(described_class::InvalidURNError)
     end
 
@@ -43,15 +43,15 @@ RSpec.describe URN do
       expect(described_class.new("urn:#{nid}:bar")).to be_kind_of(described_class)
     end
 
-    it 'returns error if the namespace identifier begins with a hyphen' do
+    it 'raises an error if the namespace identifier begins with a hyphen' do
       expect { described_class.new('urn:-foo:bar') }.to raise_error(described_class::InvalidURNError)
     end
 
-    it 'returns error if the namespace specific string has invalid escaping' do
+    it 'raises an error if the namespace specific string has invalid escaping' do
       expect { described_class.new('urn:foo:bar%2') }.to raise_error(described_class::InvalidURNError)
     end
 
-    it 'returns error if the namespace specific string has reserved characters' do
+    it 'raises an error if the namespace specific string has reserved characters' do
       expect { described_class.new('urn:foo:café') }.to raise_error(described_class::InvalidURNError)
     end
   end
