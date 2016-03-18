@@ -6,6 +6,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
 - `#normalize` returns a normalized `URN` object instead of its `String` representation. You can get the normalized `String` representation with `.normalize.to_s`
+- Do not allow hexadecimal numbers from 0 to 20. See [RFC2141](https://www.ietf.org/rfc/rfc2141.txt) section "2.4 Excluded characters".
 
 ### Added
 - Shortcut method (`URN()`) at creation:

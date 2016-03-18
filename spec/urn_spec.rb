@@ -54,6 +54,10 @@ RSpec.describe URN do
     it 'raises an error if the namespace specific string has reserved characters' do
       expect { described_class.new('urn:foo:café') }.to raise_error(described_class::InvalidURNError)
     end
+
+    it 'raises an error if the namespace specific string has a not allowed hexadecimal value' do
+      expect { described_class.new('urn:foo:abc%10') }.to raise_error(described_class::InvalidURNError)
+    end
   end
 
   describe '#normalize' do
