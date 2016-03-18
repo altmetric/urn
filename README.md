@@ -128,6 +128,20 @@ URN('urn:name:spec').eql?(URN('urn:name:spec'))
 ```
 Returns true if the URN objects are equal. This method does NOT normalize either URN before doing the comparison.
 
+### `.extract(str)`
+```ruby
+URN.extract('text urn:1234:abc more text URN:foo:bar%23.\\')
+#=> ['urn:1234:abc', 'URN:foo:bar%23.']
+
+normalized_urns = []
+#=> []
+URN.extract('text urn:1234:abc more text URN:foo:bar%23.\\') { |urn| normalized_urns << URN(urn).normalize.to_s }
+#=> nil
+normalized_urns
+#=> ['urn:1234:abc', 'URN:foo:bar%23.']
+```
+Extracts URNs from a string. If block given, iterates through all matched URNs. Returns nil if block given or array with matches.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/altmetric/urn.

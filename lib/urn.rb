@@ -12,6 +12,17 @@ class URN
   attr_reader :urn
   private :urn
 
+  def self.extract(str)
+    if block_given?
+      str.scan(/#{PATTERN}/) { yield $& }
+      nil
+    else
+      result = []
+      str.scan(/#{PATTERN}/) { result.push $& }
+      result
+    end
+  end
+
   def initialize(urn)
     fail InvalidURNError, "bad URN(is not URN?): #{urn}" if urn !~ REGEX
 

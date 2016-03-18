@@ -137,4 +137,21 @@ RSpec.describe URN do
       expect(described_class.new('urn:name:spec')).not_to eql(described_class.new('urn:Name:spec'))
     end
   end
+
+  describe '.extract' do
+    it 'extracts the URNs from a string' do
+      str = 'En un pueblo italiano urn:1234:abc al pie de la montaña URN:foo:bar%23.\\'
+
+      expect(URN.extract(str)).to contain_exactly('urn:1234:abc', 'URN:foo:bar%23.')
+    end
+
+    it 'extracts the URNs from a string using a block' do
+      str = 'Llum, foc, destrucció. urn:foo:%10 El món pot ser només una runa, URN:FOO:BA%2cR això no ho consentirem.'
+
+      normalized_urns = []
+      URN.extract(str) { |urn| normalized_urns << URN(urn).normalize.to_s }
+
+      expect(normalized_urns).to contain_exactly('urn:foo:BA%2cR')
+    end
+  end
 end
