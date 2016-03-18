@@ -51,7 +51,7 @@ Return a `String` of an unanchored regular expression suitable for matching URNs
 URN::REGEX
 #=> /\A(?i:urn:(?!urn:)[a-z0-9][a-z0-9-]{1,31}:(?:[a-z0-9()+,-.:=@;$_!*']|%[0-9a-f]{2})+)\z/
 ```
-Return an `Regexp` object with the anchored regular expression suitable to match a URN.
+Return a `Regexp` object with the anchored regular expression suitable to match a URN.
 
 ### `URN()` or `URN.new`
 ```ruby
