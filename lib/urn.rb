@@ -12,15 +12,8 @@ class URN
   attr_reader :urn
   private :urn
 
-  def self.extract(str)
-    if block_given?
-      str.scan(/#{PATTERN}/) { yield $& }
-      nil
-    else
-      result = []
-      str.scan(/#{PATTERN}/) { result.push $& }
-      result
-    end
+  def self.extract(str, &blk)
+    str.scan(/#{PATTERN}/, &blk)
   end
 
   def initialize(urn)
