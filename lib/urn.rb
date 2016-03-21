@@ -24,6 +24,7 @@ class URN
   end
 
   def initialize(urn)
+    urn = urn.to_s
     fail InvalidURNError, "bad URN(is not URN?): #{urn}" if urn !~ REGEX
 
     @urn = urn

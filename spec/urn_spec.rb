@@ -10,9 +10,21 @@ RSpec.describe URN do
     it 'raise InvalidURNError if it is not valid' do
       expect { URN('urn:urn:1234') }.to raise_error(described_class::InvalidURNError, 'bad URN(is not URN?): urn:urn:1234')
     end
+
+    it 'returns the same URN if the argument is a URN' do
+      urn = URN.new('urn:foo:bar')
+
+      expect(URN(urn).to_s).to eq('urn:foo:bar')
+    end
   end
 
   describe '#initialize' do
+    it 'returns the same URN if the argument is a URN' do
+      urn = URN.new('urn:foo:bar')
+
+      expect(URN.new(urn).to_s).to eq('urn:foo:bar')
+    end
+
     it 'returns a URN if it is valid' do
       expect(described_class.new('urn:namespace:specificstring')).to be_kind_of(described_class)
     end

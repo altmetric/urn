@@ -34,6 +34,11 @@ URN('URN:Name:Spec').to_s
 - `#==(other)` returns true if the URN objects are equivalent. This method normalizes both URNs before doing the comparison.
 - `#eql?(other)` returns true if the URN objects are equal. This method does NOT normalize either URN before doing the comparison.
 - `.extract(str)` attempts to parse and merge a set of URNs. If no `block` is given, then returns the result as an `Array`. Else it calls `block` for each element in result and returns `nil`.
+- URN initialization accepts a `URN` as argument:
+```ruby
+URN(URN('urn:foo:bar'))
+#=> #<URN:0x007f85040434c8 @urn="urn:foo:bar">
+```
 
 ### Removed
 - `#valid?`. Validity check is now at object creation time, therefore all instances of `URN` are valid.
