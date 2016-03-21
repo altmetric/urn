@@ -9,7 +9,7 @@ class URN
             %{(?:[a-z0-9()+,-.:=@;$_!*']|%(?:2[1-9a-f]|[3-6][0-9a-f]|7[0-9a-e]))+)}.freeze
   REGEX = /\A#{PATTERN}\z/
 
-  attr_reader :urn
+  attr_reader :urn, :nid, :nss
   private :urn
 
   def self.extract(str, &blk)
@@ -21,23 +21,10 @@ class URN
     fail InvalidURNError, "bad URN(is not URN?): #{urn}" if urn !~ REGEX
 
     @urn = urn
-  end
-
-  def nid
-    _scheme, nid, _nss = parse
-
-    nid
-  end
-
-  def nss
-    _scheme, _nid, nss = parse
-
-    nss
+    _scheme, @nid, @nss = urn.split(':', 3)
   end
 
   def normalize
-    _scheme, nid, nss = parse
-
     normalized_nid = nid.downcase
     normalized_nss = nss.gsub(/%([0-9a-f]{2})/i) { |hex| hex.downcase }
 
@@ -72,11 +59,5 @@ class URN
     return false unless other.is_a?(URN)
 
     to_s == other.to_s
-  end
-
-  private
-
-  def parse
-    urn.split(':', 3)
   end
 end
