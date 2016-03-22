@@ -11,7 +11,7 @@ Ruby library to validate and normalize URNs according to [RFC 2141](https://www.
 Add this line to your application's `Gemfile`:
 
 ```ruby
-gem 'urn', '~> 1.0'
+gem 'urn', '~> 2.0'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install urn -v '~> 1.0'
+    $ gem install urn -v '~> 2.0'
 
 ## Usage
 

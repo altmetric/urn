@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
-## Current
+## [2.0.0] - 2016-03-22
 ### Changed
 - Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
 - `#normalize` returns a normalized `URN` object instead of its `String` representation. You can get the normalized `String` representation with `.normalize.to_s`
@@ -64,6 +64,7 @@ URN(URN('urn:foo:bar'))
 ### Added
 - First version with basic implementation.
 
+[2.0.0]: https://github.com/altmetric/urn/releases/tag/v2.0.0
 [1.0.0]: https://github.com/altmetric/urn/releases/tag/v1.0.0
 [0.1.3]: https://github.com/altmetric/urn/releases/tag/v0.1.3
 [0.1.2]: https://github.com/altmetric/urn/releases/tag/v0.1.2
