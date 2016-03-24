@@ -1,5 +1,7 @@
-def URN(urn)
-  URN.new(urn)
+module Kernel
+  def URN(urn)
+    URN.new(urn)
+  end
 end
 
 class URN

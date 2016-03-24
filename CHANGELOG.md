@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## Current
+### Fixed
+- `URN()` shortcut works on classes without `Object` as ancestor.
+
 ## [2.0.0] - 2016-03-22
 ### Changed
 - Only return `URN` instances for valid `URN`s at creation. Raise `URN::InvalidURNError` otherwise.
