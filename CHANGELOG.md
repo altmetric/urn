@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.2] - 2017-01-13
+### Fixed
+- `.extract` now respects the word boundaries at the beginning of URNs. Example: `sideburn:mutton:chops` won't return `['urn:mutton:chops']` but `[]`.
+
 ## [2.0.1] - 2016-03-24
 ### Fixed
 - `URN()` shortcut works on classes without `Object` as ancestor.
@@ -68,6 +72,7 @@ URN(URN('urn:foo:bar'))
 ### Added
 - First version with basic implementation.
 
+[2.0.2]: https://github.com/altmetric/urn/releases/tag/v2.0.2
 [2.0.1]: https://github.com/altmetric/urn/releases/tag/v2.0.1
 [2.0.0]: https://github.com/altmetric/urn/releases/tag/v2.0.0
 [1.0.0]: https://github.com/altmetric/urn/releases/tag/v1.0.0

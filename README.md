@@ -148,6 +148,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/altmet
 
 ## License
 
-Copyright © 2016 Altmetric LLP
+Copyright © 2016-2017 Altmetric LLP
 
 Distributed under the [MIT License](http://opensource.org/licenses/MIT).
