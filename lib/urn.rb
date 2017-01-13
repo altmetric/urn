@@ -15,7 +15,7 @@ class URN
   private :urn
 
   def self.extract(str, &blk)
-    str.scan(/#{PATTERN}/, &blk)
+    str.scan(/\b#{PATTERN}/, &blk)
   end
 
   def initialize(urn)

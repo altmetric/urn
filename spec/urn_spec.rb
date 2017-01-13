@@ -165,5 +165,9 @@ RSpec.describe URN do
 
       expect(normalized_urns).to contain_exactly('urn:foo:BA%2cR')
     end
+
+    it 'only extracts URNs with word boundaries at the beginning' do
+      expect(URN.extract('sideburn:mutton:chops')).to be_empty
+    end
   end
 end
