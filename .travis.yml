@@ -8,6 +8,5 @@ rvm:
   - 2.2
   - 2.3.0
   - jruby-9.0.4.0
-  - rbx-2
 before_install:
   - gem install bundler -v '~> 1.11'
