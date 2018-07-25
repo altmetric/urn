@@ -29,6 +29,10 @@ RSpec.describe URN do
       expect(described_class.new('urn:namespace:specificstring')).to be_kind_of(described_class)
     end
 
+    it 'returns a URN if NSS includes /' do
+      expect(described_class.new('urn:namespace:specificstring/withbar')).to be_kind_of(described_class)
+    end
+
     it 'raise InvalidURNError if it is not valid' do
       expect { described_class.new('urn:urn:1234') }.to raise_error(described_class::InvalidURNError, 'bad URN(is not URN?): urn:urn:1234')
     end
