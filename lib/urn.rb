@@ -7,8 +7,8 @@ end
 class URN
   InvalidURNError = Class.new(StandardError)
 
-  PATTERN = %{(?i:urn:(?!urn:)[a-z0-9][a-z0-9\-]{1,31}:} +
-            %{(?:[a-z0-9()+,-.:=@;$_!*']|%(?:2[1-9a-f]|[3-6][0-9a-f]|7[0-9a-e]))+)}.freeze
+  PATTERN = %{(?i:urn:(?!urn:)[a-z0-9][\x00-\x7F]{1,31}:} +
+            %{(?:[a-z0-9()+,-.:=@;$_!*'/]|%(?:2[1-9a-f]|[3-6][0-9a-f]|7[0-9a-e]))+)}.freeze
   REGEX = /\A#{PATTERN}\z/
 
   attr_reader :urn, :nid, :nss
