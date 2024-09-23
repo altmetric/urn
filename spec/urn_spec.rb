@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'urn'
+require 'uri'
 
 RSpec.describe URN do
   describe 'URN' do

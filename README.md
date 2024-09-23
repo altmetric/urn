@@ -4,7 +4,7 @@ Ruby library to validate and normalize URNs according to [RFC 2141](https://www.
 
 [![Gem Version](https://badge.fury.io/rb/urn.svg)](https://badge.fury.io/rb/urn)  
 
-**Supported Ruby versions:** 1.8.7, 1.9.2, 1.9.3, 2.0, 2.1, 2.2, 2.3
+**Supported Ruby versions:** >= 2.3
 
 ## Installation
 
@@ -148,6 +148,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/altmet
 
 ## License
 
-Copyright © 2016-2017 Altmetric LLP
+Copyright © 2016-2024 Altmetric LLP
 
 Distributed under the [MIT License](http://opensource.org/licenses/MIT).
