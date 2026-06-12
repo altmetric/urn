@@ -1,4 +1,4 @@
-# URN [![Build Status](https://travis-ci.org/altmetric/urn.svg?branch=master)](https://travis-ci.org/altmetric/urn)
+# URN [![CI for URN Gem](https://github.com/altmetric/urn/actions/workflows/ci.yml/badge.svg)](https://github.com/altmetric/urn/actions/workflows/ci.yml)
 
 Ruby library to validate and normalize URNs according to [RFC 2141](https://www.ietf.org/rfc/rfc2141.txt).
 
@@ -148,6 +148,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/altmet
 
 ## License
 
-Copyright © 2016-2024 Altmetric LLP
+Copyright © 2016-2026 Altmetric LLP
 
 Distributed under the [MIT License](http://opensource.org/licenses/MIT).
